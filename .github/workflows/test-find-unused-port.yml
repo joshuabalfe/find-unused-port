@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Find Unused Port
     steps:
-      - uses: joshuabalfe/find-unused-port
+      - uses: joshuabalfe/find-unused-port@alpha
         with: 
           var: MY_PORT
 
