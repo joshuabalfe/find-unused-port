@@ -11,7 +11,7 @@ jobs:
 
       - name: Verify found port
         run: |
-          echo $GITHUB_ENV
+          echo ${{ env.MY_PORT }}
         shell: bash
 
 
