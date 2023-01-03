@@ -1,0 +1,26 @@
+name: 'Find Unused Port'
+description: 'Find an unused port on linux and assign it to a GITHUB_ENV var'
+author: 'Joshua Balfe <joshuabalfe@googlemail.com>'
+inputs:
+  var:
+    description: 'Name of ENV variable to assign port to'
+    required: true
+    default: 'PORT'
+outputs:
+  port:
+    description: 'Port number'
+    value: ${{ steps.find.outputs.port }}
+runs: 
+  using: 'composite'
+  steps:
+    - id: find
+      run: |
+        read LOWERPORT UPPERPORT < /proc/sys/net/ipv4/ip_local_port_range
+        while :
+        do
+          PORT="`shuf -i $LOWERPORT-$UPPERPORT -n 1`"
+          ss -lpn | grep -q ":$PORT " || break
+        done
+        echo "port=$(echo $PORT)" >> $GITHUB_OUTPUT
+        echo "${{ inputs.var }}=$PORT" >> $GITHUB_ENV
+      shell: bash
