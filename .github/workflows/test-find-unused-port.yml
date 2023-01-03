@@ -11,6 +11,10 @@ jobs:
 
       - name: Verify found port
         run: |
+          if [ ${{ env.MY_PORT }} -eq '' ]
+          then 
+            exit 1
+          fi
           echo ${{ env.MY_PORT }}
         shell: bash
 
