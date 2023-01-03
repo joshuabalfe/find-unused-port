@@ -5,11 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Find Unused Port
     steps:
-      - uses: joshuabalfe/find-unused-port@v1
+      - name: Use the find-unused-port action
+        uses: joshuabalfe/find-unused-port@v1
         with: 
           var: MY_PORT
 
-      - name: Verify found port
+      - name: Verify found port was assigned to github env
         run: |
           if [ ${{ env.MY_PORT }} == '' ]
           then 
