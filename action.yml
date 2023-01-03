@@ -18,7 +18,7 @@ runs:
           # Check if port is claimed 
           ss -lpn | grep -q ":$PORT " ||
           # Check if a previous run of this action has added this port to $GITHUB_ENV already
-          echo $GITHUB_ENV | grep -q "=$PORT" ||
+          echo $GITHUB_ENV | grep -q "$PORT" ||
           # If this port isn't claimed and hasn't already been added to the $GITHUB_ENV then add it
           break
         done
