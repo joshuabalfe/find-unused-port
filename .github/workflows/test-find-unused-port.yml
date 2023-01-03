@@ -1,0 +1,18 @@
+on: [push]
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    name: Test Find Unused Port
+    steps:
+      - uses: joshuabalfe/find-unused-port
+        with: 
+          var: MY_PORT
+
+      - name: Verify found port
+        run: |
+          echo $GITHUB_ENV
+        shell: bash
+
+
+  
