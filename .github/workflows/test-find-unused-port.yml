@@ -6,7 +6,7 @@ jobs:
     name: Test Find Unused Port
     steps:
       - name: Use the find-unused-port action
-        uses: joshuabalfe/find-unused-port@v1
+        uses: joshuabalfe/find-unused-port@main
         with: 
           var: MY_PORT
 
