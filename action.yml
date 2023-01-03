@@ -6,10 +6,6 @@ inputs:
     description: 'Name of ENV variable to assign port to'
     required: true
     default: 'PORT'
-outputs:
-  port:
-    description: 'Port number'
-    value: ${{ steps.find.outputs.port }}
 runs: 
   using: 'composite'
   steps:
@@ -26,6 +22,5 @@ runs:
           # If this port isn't claimed and hasn't already been added to the $GITHUB_ENV then add it
           break
         done
-        echo "port=$(echo $PORT)" >> $GITHUB_OUTPUT
         echo "${{ inputs.var }}=$PORT" >> $GITHUB_ENV
       shell: bash
