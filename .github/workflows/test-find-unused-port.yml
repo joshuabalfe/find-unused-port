@@ -12,7 +12,8 @@ jobs:
 
       - name: Verify found port was assigned to github env
         run: |
-          if [ ${{ env.MY_PORT }} == '' ]
+          $port=${{ env.MY_PORT }}
+          if [ -z "$port" || "$port" == '' ]
           then 
             echo "No port assigned to github env"
             exit 1
