@@ -23,4 +23,11 @@ jobs:
             exit 1
           fi
           echo ${{ env.MY_PORT }}
+
+          if [[ "${{ env.MY_OTHER_PORT }}" == '' ]]
+          then 
+            echo "No other port assigned to github env"
+            exit 1
+          fi
+          echo ${{ env.MY_OTHER_PORT }}
   
