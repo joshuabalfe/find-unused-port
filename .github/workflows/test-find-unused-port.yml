@@ -9,10 +9,6 @@ jobs:
         with: 
           var: MY_PORT
 
-      - name: Force failure
-        run: |
-          echo "MY_PORT=''" >> $GITHUB_ENV
-
       - name: Verify found port
         run: |
           if [ ${{ env.MY_PORT }} == '' ]
