@@ -10,6 +10,11 @@ jobs:
         with: 
           var: MY_PORT
 
+      - name: Use the find-unused-port action again
+        uses: joshuabalfe/find-unused-port@main
+        with: 
+          var: MY_OTHER_PORT
+
       - name: Verify found port was assigned to github env
         run: |
           if [[ "${{ env.MY_PORT }}" == '' ]]
